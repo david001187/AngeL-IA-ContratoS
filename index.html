@@ -44,11 +44,6 @@
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
                         cinzel: ['Cinzel', 'serif'],
                         mono: ['JetBrains Mono', 'monospace']
-                    },
-                    boxShadow: {
-                        'celeste-glow': '0 0 35px rgba(0, 243, 255, 0.5)',
-                        'gold-wing-glow': '0 0 30px rgba(255, 215, 0, 0.45)',
-                        'white-glow': '0 0 25px rgba(255, 255, 255, 0.7)',
                     }
                 }
             }
@@ -56,13 +51,6 @@
     </script>
 
     <style>
-        :root {
-            --color-celeste: #38bdf8;
-            --color-neon-ice: #00f3ff;
-            --color-gold: #ffd700;
-            --color-white: #ffffff;
-        }
-
         body {
             background: linear-gradient(135deg, #06132b 0%, #0c2957 35%, #18488a 70%, #2866b8 100%);
             color: #f0f9ff;
@@ -86,449 +74,115 @@
         .wing-card-center {
             background: rgba(10, 32, 68, 0.65);
             backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
             border: 1.5px solid rgba(255, 215, 0, 0.6);
             border-radius: 36px;
-            box-shadow: 0 18px 50px -10px rgba(0, 15, 45, 0.8), 0 0 30px rgba(0, 243, 255, 0.25);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .wing-card-center:hover {
-            border-color: rgba(0, 243, 255, 0.8);
-            box-shadow: 0 22px 60px -10px rgba(0, 15, 45, 0.9), 0 0 35px rgba(0, 243, 255, 0.4);
-            transform: translateY(-3px);
-        }
-
-        .wing-crest-badge {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(56, 189, 248, 0.2) 100%);
-            border: 1px solid #ffd700;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .glow-text-celeste {
-            color: #ffffff;
-            text-shadow: 0 0 12px rgba(0, 243, 255, 0.9), 0 0 24px rgba(56, 189, 248, 0.7);
         }
 
         .btn-glass-ice {
             background: rgba(56, 189, 248, 0.18);
             color: #f0f9ff;
             border: 1px solid rgba(56, 189, 248, 0.45);
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
-
-        .btn-glass-ice:hover {
-            background: rgba(0, 243, 255, 0.32);
-            border-color: #00f3ff;
-            box-shadow: 0 0 22px rgba(0, 243, 255, 0.5);
-            color: #ffffff;
         }
 
         .btn-gold-accent {
             background: linear-gradient(135deg, #fef08a 0%, #ffd700 60%, #ca8a04 100%);
             color: #0f172a;
             font-weight: 800;
-            border: 1px solid #fef08a;
-            box-shadow: 0 4px 18px rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-gold-accent:hover {
-            box-shadow: 0 6px 28px rgba(255, 215, 0, 0.7);
-            transform: translateY(-2px);
         }
 
         .adsterra-banner-container {
-            background: rgba(5, 15, 35, 0.75);
+            background: rgba(5, 15, 35, 0.85);
             border: 1px dashed rgba(255, 215, 0, 0.4);
             border-radius: 20px;
             padding: 12px;
             text-align: center;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
             min-height: 110px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
-<body class="relative min-h-screen flex flex-col justify-between selection:bg-amber-300 selection:text-slate-950">
+<body class="relative min-h-screen flex flex-col justify-between">
 
     <canvas id="webgl-bg"></canvas>
 
     <div class="relative z-10 flex flex-col min-h-screen">
 
         <!-- Header -->
-        <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/35 border-b border-amber-400/30 px-4 lg:px-8 py-3.5">
+        <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/35 border-b border-amber-400/30 px-4 py-3.5">
             <div class="max-w-7xl mx-auto flex items-center justify-between">
-                
-                <div class="flex items-center space-x-3 cursor-pointer" onclick="resetApp()">
-                    <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-300 via-cyan-300 to-white p-[1.5px] shadow-gold-wing-glow">
-                        <div class="w-full h-full bg-slate-950/90 rounded-[14px] flex items-center justify-center">
-                            <i class="fa-solid fa-feather-pointed text-amber-300 text-xl animate-pulse"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex items-center space-x-2">
-                            <span class="font-cinzel font-black text-xl sm:text-2xl tracking-wider text-white">Angel<span class="text-cyan-300 glow-text-celeste">.Revelador</span></span>
-                            <span class="px-2.5 py-0.5 text-[10px] font-mono tracking-widest font-bold bg-amber-400/20 text-amber-300 border border-amber-300/40 rounded-full shadow-gold-wing-glow">CONTRATOS</span>
-                        </div>
-                        <p class="text-[11px] text-sky-100/80 font-sans">Auditoría Legal Inteligente</p>
-                    </div>
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="location.reload()">
+                    <span class="font-cinzel font-black text-xl text-white">Angel<span class="text-cyan-300">.Revelador</span></span>
                 </div>
-
                 <div class="flex items-center space-x-3">
-                    <button onclick="toggleKeyModal()" class="flex items-center space-x-2 text-xs font-semibold px-3.5 py-2 rounded-xl btn-glass-ice">
-                        <i class="fa-solid fa-key text-amber-300"></i>
-                        <span id="keyStatusText">Gemini API Key</span>
-                    </button>
-                    <a href="#auditor-zone" class="hidden sm:flex items-center space-x-2 text-xs font-bold px-4 py-2.5 rounded-xl btn-gold-accent">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        <span>Auditar Contrato</span>
-                    </a>
+                    <button onclick="toggleKeyModal()" class="text-xs font-semibold px-3.5 py-2 rounded-xl btn-glass-ice">Gemini API Key</button>
                 </div>
             </div>
         </header>
 
-        <!-- Banner Superior Adsterra (Iframe Aislado) -->
+        <!-- Banner Superior Adsterra Directo -->
         <div class="max-w-4xl mx-auto px-4 w-full mt-4 flex justify-center">
-            <div class="adsterra-banner-container" style="min-height: 100px; width: 100%; display: flex; justify-content: center; align-items: center;">
-                <iframe 
-                    src="/ad-banner.html" 
-                    width="728" 
-                    height="90" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    style="border:none; overflow:hidden;"
-                ></iframe>
+            <div class="adsterra-banner-container w-full">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'b8113d67e8f04c994678796f49befc14',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://recordssponge.com/b8113d67e8f04c994678796f49befc14/invoke.js"></script>
             </div>
         </div>
 
-        <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-
+        <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 space-y-10">
             <section class="text-center space-y-4 max-w-3xl mx-auto pt-2">
-                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full wing-crest-badge text-amber-200 text-xs font-bold tracking-wide">
-                    <i class="fa-solid fa-shield-halved text-amber-300 animate-bounce"></i>
-                    <span>Angel Revelador Contratos — Agente Guardián 3D</span>
-                </div>
-                
-                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-cinzel text-white leading-tight">
-                    Auditoría de Contratos. <br/>
-                    <span class="glow-text-gold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-white to-cyan-300">Devela la letra chica oculta.</span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold font-cinzel text-white">
+                    Auditoría de Contratos.
                 </h1>
-                
-                <p class="text-sm sm:text-base text-sky-100/90 max-w-2xl mx-auto leading-relaxed">
-                    Sube tu contrato de arriendo, servicios o empleo. Nuestro personaje 3D con alas doradas analizará penalizaciones, cláusulas abusivas y trampas legales en tiempo real.
+                <p class="text-sm sm:text-base text-sky-100/90">
+                    Sube tu contrato. Nuestro personaje 3D analizará penalizaciones y cláusulas en tiempo real.
                 </p>
             </section>
 
             <!-- Document Upload Box -->
-            <section id="auditor-zone" class="max-w-4xl mx-auto">
-                <div class="wing-card-center rounded-3xl p-6 sm:p-9 relative overflow-hidden">
-                    
-                    <div id="uploadDropZone" class="border-2 border-dashed border-amber-300/50 hover:border-cyan-300 bg-slate-950/40 rounded-3xl p-6 sm:p-10 text-center transition-all cursor-pointer group relative">
-                        <input type="file" id="fileInput" class="hidden" accept=".pdf,.png,.jpg,.jpeg,.txt,.docx" onchange="handleFileSelect(event)">
-                        
-                        <div class="space-y-4 pointer-events-none">
-                            <div class="w-20 h-20 mx-auto rounded-3xl bg-slate-900/80 border border-amber-300/60 group-hover:border-white group-hover:shadow-gold-wing-glow flex items-center justify-center transition-all">
-                                <i class="fa-solid fa-feather text-4xl text-amber-300 group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <div>
-                                <p class="text-base sm:text-lg font-bold text-white">Arrastra aquí tu contrato o <span class="text-amber-300 underline underline-offset-4 decoration-cyan-300">haz clic para examinar</span></p>
-                                <p class="text-xs text-sky-100/80 mt-1">Soporta PDF, fotos/imágenes de hojas (OCR), Word y texto plano</p>
-                            </div>
-                            <div class="flex items-center justify-center space-x-5 pt-2 text-xs font-mono text-cyan-100">
-                                <span><i class="fa-solid fa-file-pdf text-amber-300 mr-1.5"></i> PDF</span>
-                                <span><i class="fa-solid fa-image text-cyan-300 mr-1.5"></i> Foto/Imagen</span>
-                                <span><i class="fa-solid fa-file-lines text-white mr-1.5"></i> Word / TXT</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-amber-400/20">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <span class="text-xs font-semibold text-amber-200/90 mr-1">Muestras:</span>
-                            <button onclick="loadDemoDocument('arriendo')" class="text-xs px-3.5 py-2 rounded-xl btn-glass-ice">Arriendo</button>
-                            <button onclick="loadDemoDocument('laboral')" class="text-xs px-3.5 py-2 rounded-xl btn-glass-ice">Laboral</button>
-                        </div>
-
-                        <button id="runAuditBtn" onclick="runContractAudit()" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl btn-gold-accent flex items-center justify-center space-x-2.5">
-                            <i class="fa-solid fa-feather-pointed text-slate-950"></i>
-                            <span>Auditar con Angel Revelador</span>
-                        </button>
-                    </div>
-
+            <section class="max-w-4xl mx-auto">
+                <div class="wing-card-center p-8 text-center">
+                    <p class="text-white font-bold">Panel de Carga listo</p>
                 </div>
             </section>
 
             <!-- Banner Nativo Adsterra -->
             <section class="max-w-4xl mx-auto my-8">
                 <div class="wing-card-center p-6 text-center">
-                    <p class="text-[10px] uppercase font-mono text-amber-300/70 mb-3 tracking-widest">Anuncios Patrocinados</p>
-                    
+                    <p class="text-[10px] uppercase font-mono text-amber-300/70 mb-3">Anuncios Patrocinados</p>
                     <script async="async" data-cfasync="false" src="https://recordssponge.com/244f55c0fc6d98516beadc04db062670/invoke.js"></script>
                     <div id="container-244f55c0fc6d98516beadc04db062670"></div>
                 </div>
             </section>
-
         </main>
 
-        <!-- Footer -->
-        <footer class="border-t border-amber-300/20 mt-12 py-6 text-center text-xs text-cyan-200/70 wing-card-center">
-            <p>Angel Revelador Contratos — Ciberseguridad & Auditoría Legal © 2026</p>
-            <p class="mt-1 text-[11px] text-cyan-200/50">El análisis provisto es de carácter orientativo y no reemplaza la asesoría jurídica profesional.</p>
-        </footer>
-
-    </div>
-
-    <!-- API Key Modal -->
-    <div id="keyModal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
-        <div class="wing-card-center w-full max-w-md rounded-3xl p-6 space-y-4">
-            <div class="flex items-center justify-between border-b border-amber-300/20 pb-3">
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-key text-amber-300"></i>
-                    <h3 class="font-bold text-white text-base font-cinzel">Configurar Gemini API Key</h3>
-                </div>
-                <button onclick="toggleKeyModal()" class="text-cyan-200 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <p class="text-xs text-cyan-100/80 leading-relaxed">
-                Ingresa tu API Key de Google Gemini para habilitar auditoría en tiempo real con inteligencia artificial.
-            </p>
-
-            <div class="space-y-2">
-                <label class="text-xs font-semibold text-amber-300">API Key de Gemini</label>
-                <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full bg-slate-950 border border-amber-300/40 focus:border-cyan-300 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono focus:outline-none">
-            </div>
-
-            <div class="flex items-center justify-between pt-2">
-                <a href="https://aistudio.google.com/" target="_blank" class="text-xs text-cyan-300 hover:underline">Obtener Key en Google AI Studio</a>
-                <button onclick="saveApiKey()" class="px-4 py-2 rounded-xl btn-gold-accent text-xs">Guardar</button>
-            </div>
-        </div>
     </div>
 
     <!-- Escena Three.js 3D -->
     <script>
         let scene, camera, renderer;
-        let starField, cosmicParticles, angelGroup;
-        let leftWingMesh, rightWingMesh;
-        let mouseX = 0, mouseY = 0;
-
         function initThreeJS() {
             const canvas = document.getElementById('webgl-bg');
             scene = new THREE.Scene();
-
             camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
             camera.position.z = 28;
-
             renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            scene.fog = new THREE.FogExp2(0x0c2957, 0.012);
-
-            createCelestialStars();
-            createCosmicParticles();
-            create3DAngelCharacter();
-
-            const ambientLight = new THREE.AmbientLight(0x205599, 2.2);
-            scene.add(ambientLight);
-
-            const goldPointLight = new THREE.PointLight(0xffd700, 4.0, 70);
-            goldPointLight.position.set(12, 12, 15);
-            scene.add(goldPointLight);
-
-            const icePointLight = new THREE.PointLight(0x00f3ff, 3.0, 60);
-            icePointLight.position.set(-15, -10, 10);
-            scene.add(icePointLight);
-
-            window.addEventListener('resize', onWindowResize, false);
-            document.addEventListener('mousemove', onMouseMove, false);
-
             animateThreeJS();
         }
-
-        function createCelestialStars() {
-            const count = 1600;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(count * 3);
-            const colors = new Float32Array(count * 3);
-
-            const colorPalette = [
-                new THREE.Color(0xffffff),
-                new THREE.Color(0x38bdf8),
-                new THREE.Color(0xffd700)
-            ];
-
-            for (let i = 0; i < count * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 120;
-                positions[i + 1] = (Math.random() - 0.5) * 120;
-                positions[i + 2] = (Math.random() - 0.5) * 120;
-
-                const col = colorPalette[Math.floor(Math.random() * colorPalette.length)];
-                colors[i] = col.r;
-                colors[i + 1] = col.g;
-                colors[i + 2] = col.b;
-            }
-
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            const material = new THREE.PointsMaterial({
-                size: 0.7,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.85
-            });
-
-            starField = new THREE.Points(geometry, material);
-            scene.add(starField);
-        }
-
-        function createCosmicParticles() {
-            const count = 300;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(count * 3);
-
-            for (let i = 0; i < count * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 80;
-                positions[i + 1] = (Math.random() - 0.5) * 80;
-                positions[i + 2] = (Math.random() - 0.5) * 60;
-            }
-
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-            const material = new THREE.PointsMaterial({
-                size: 1.2,
-                color: 0x00f3ff,
-                transparent: true,
-                opacity: 0.6
-            });
-
-            cosmicParticles = new THREE.Points(geometry, material);
-            scene.add(cosmicParticles);
-        }
-
-        function create3DAngelCharacter() {
-            angelGroup = new THREE.Group();
-
-            const coreGeometry = new THREE.SphereGeometry(1.2, 32, 32);
-            const coreMaterial = new THREE.MeshStandardMaterial({
-                color: 0xffd700,
-                emissive: 0xffd700,
-                emissiveIntensity: 0.6,
-                roughness: 0.2,
-                metalness: 0.8
-            });
-            const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial);
-            angelGroup.add(coreMesh);
-
-            const wingShape = new THREE.Shape();
-            wingShape.moveTo(0, 0);
-            wingShape.quadraticCurveTo(3, 4, 1, 8);
-            wingShape.quadraticCurveTo(-1, 5, -0.5, 2);
-            wingShape.closePath();
-
-            const extrudeSettings = {
-                steps: 2,
-                depth: 0.2,
-                bevelEnabled: true,
-                bevelThickness: 0.1,
-                bevelSize: 0.1,
-                bevelSegments: 3
-            };
-
-            const wingGeo = new THREE.ExtrudeGeometry(wingShape, extrudeSettings);
-            const wingMat = new THREE.MeshStandardMaterial({
-                color: 0xffd700,
-                emissive: 0xb45309,
-                emissiveIntensity: 0.4,
-                roughness: 0.3,
-                metalness: 0.9,
-                side: THREE.DoubleSide
-            });
-
-            leftWingMesh = new THREE.Mesh(wingGeo, wingMat);
-            leftWingMesh.position.set(-0.8, -1, 0);
-            leftWingMesh.rotation.z = -0.3;
-            leftWingMesh.scale.set(1.2, 1.2, 1.2);
-            angelGroup.add(leftWingMesh);
-
-            rightWingMesh = new THREE.Mesh(wingGeo, wingMat);
-            rightWingMesh.position.set(0.8, -1, 0);
-            rightWingMesh.rotation.z = 0.3;
-            rightWingMesh.scale.set(-1.2, 1.2, 1.2);
-            angelGroup.add(rightWingMesh);
-
-            angelGroup.position.set(0, 0, -5);
-            scene.add(angelGroup);
-        }
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        function onMouseMove(event) {
-            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-        }
-
         function animateThreeJS() {
             requestAnimationFrame(animateThreeJS);
-
-            const time = Date.now() * 0.001;
-
-            if (starField) {
-                starField.rotation.y = time * 0.03;
-                starField.rotation.x = time * 0.01;
-            }
-
-            if (cosmicParticles) {
-                cosmicParticles.rotation.y = -time * 0.05;
-            }
-
-            if (angelGroup) {
-                angelGroup.position.y = Math.sin(time * 1.5) * 0.6;
-                angelGroup.rotation.y = THREE.MathUtils.lerp(angelGroup.rotation.y, mouseX * 0.5, 0.05);
-                angelGroup.rotation.x = THREE.MathUtils.lerp(angelGroup.rotation.x, -mouseY * 0.5, 0.05);
-
-                if (leftWingMesh && rightWingMesh) {
-                    const flap = Math.sin(time * 3) * 0.15;
-                    leftWingMesh.rotation.z = -0.3 + flap;
-                    rightWingMesh.rotation.z = 0.3 - flap;
-                }
-            }
-
             renderer.render(scene, camera);
         }
-
-        function toggleKeyModal() {
-            const modal = document.getElementById('keyModal');
-            modal.classList.toggle('hidden');
-        }
-
-        function saveApiKey() {
-            const key = document.getElementById('apiKeyInput').value;
-            if (key) {
-                localStorage.setItem('gemini_api_key', key);
-                document.getElementById('keyStatusText').innerText = 'API Key Configurada';
-                toggleKeyModal();
-            }
-        }
-
-        function resetApp() {
-            location.reload();
-        }
-
-        window.onload = function() {
-            initThreeJS();
-        };
+        window.onload = initThreeJS;
     </script>
 </body>
 </html>
