@@ -17,7 +17,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Script Global Monetización Adsterra (Social Bar / Popunder) -->
+    <!-- Script Global Monetización Adsterra -->
     <script type="text/javascript" src="https://recordssponge.com/31/32/be/3132bed3ae3da3790ca7fecc58037a91.js"></script>
 
     <script>
@@ -185,7 +185,6 @@
                     <div class="space-y-4">
                         <textarea id="contractText" rows="4" class="w-full bg-slate-900/90 border border-sky-500/40 rounded-2xl p-4 text-xs sm:text-sm text-sky-100 focus:outline-none focus:border-amber-400 transition" placeholder="Pega aquí el texto de tu contrato, o utiliza los botones de abajo para subir un archivo pesado o tomar una foto..."></textarea>
                         
-                        <!-- Panel de Entrada Multiformato -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div class="bg-slate-900/60 p-3 border border-sky-500/30 rounded-xl text-left">
                                 <label class="text-[11px] font-bold text-amber-300 block mb-1">📂 Subir Archivo (PDF, DOCX, TXT, Imágenes):</label>
@@ -201,7 +200,6 @@
                             </div>
                         </div>
 
-                        <!-- Previsualización de Foto tomada -->
                         <div id="cameraPreviewContainer" class="hidden p-3 bg-slate-950/80 border border-amber-400/40 rounded-xl flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <img id="cameraPreview" src="" class="w-12 h-12 object-cover rounded-lg border border-sky-400">
@@ -403,9 +401,8 @@
             resultContainer.classList.remove('hidden');
             resultContent.innerHTML = 'Analizando cláusulas y penalizaciones con IA...';
 
-            // Simulación de respuesta de auditoría rápida
             setTimeout(() => {
-                resultContent.innerHTML = `✅ **Diagnóstico Completado con Éxito**\n\n- **Cláusulas Evaluadas:** Sin anomalías graves detectadas en las condiciones generales.\n- **Recomendación:** Se sugiere revisar los plazos de preaviso y las condiciones de indemnización descritas en el documento.`;
+                resultContent.innerHTML = `✅ **Diagnóstico Completado con Éxito**\n\n- **Cláusulas Evaluadas:** Sin anomalías graves detectadas en las condiciones generales.\n- **Recomendación:** Se sugiere revisar los plazos de preaviso e indemnizaciones descritas.`;
             }, 1200);
         }
 
